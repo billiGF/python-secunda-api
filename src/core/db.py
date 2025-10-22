@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base, declared_attr
 from sqlalchemy import Column, Integer
 from src.core.config import settings
 
+
 class PREBase:
     @declared_attr
     def __tablename__(self):
@@ -14,3 +15,8 @@ class PREBase:
 Base = declarative_base(cls=PREBase)
 engine = create_async_engine(settings.database_url)
 AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
+
+
+async def async_session():
+    async with AsyncSessionLocal() as session:
+        yield session

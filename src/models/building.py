@@ -1,7 +1,9 @@
 from src.core.db import Base
-from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 from .organization import Organization
+from sqlalchemy import Table ,Column, String, Integer, ForeignKey
+
+
 
 class Building(Base):
     name = Column(String(50))
@@ -9,3 +11,16 @@ class Building(Base):
     longitude = Column(Integer)
     latitude = Column(Integer)
     organization_id = relationship(Organization, cascade='delete')
+
+
+
+from .organization import Organization
+from .activities import Activities
+
+
+organization_activity = Table(
+    "organization_activity",
+    Base.metadata,
+    organization_id = Column(Integer, ForeignKey('activities.id')),
+    activities_id = Column(Integer, ForeignKey('organization.id'))
+)

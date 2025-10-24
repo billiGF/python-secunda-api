@@ -1,5 +1,5 @@
-from pydantic import BaseModel, validator, root_validator
 from typing import Optional
+from pydantic import BaseModel, validator, root_validator
 
 
 

@@ -1,6 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
+
+
 class CRUDBase:
     def __init__(self, model):
         self.model = model
@@ -8,10 +10,10 @@ class CRUDBase:
 
     async def create(
             self,
-            building_form,
+            creating_form,
             session: AsyncSession
         ):
-        building = building_form.dict()
+        building = creating_form.dict()
         info = self.model(**building)
         session.add(info)
         await session.commit()

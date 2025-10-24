@@ -1,7 +1,9 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from src.core.db import Base
+from .base import CRUDBase
+from src.models.organization import Organization
 
 
-class Organization(Base):
-    name = Column(String)
-    number = Column
+class ORGANIZATIONCrud(CRUDBase):
+    pass
+
+
+organiztaion_crud = ORGANIZATIONCrud(Organization)

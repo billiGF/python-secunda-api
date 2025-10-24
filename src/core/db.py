@@ -4,6 +4,7 @@ from sqlalchemy import Column, Integer
 from src.core.config import settings
 
 
+
 class PREBase:
     @declared_attr
     def __tablename__(self):

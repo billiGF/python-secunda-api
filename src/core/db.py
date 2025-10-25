@@ -17,6 +17,10 @@ Base = declarative_base(cls=PREBase)
 engine = create_async_engine(settings.database_url)
 AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
 
+async def init_models():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
 
 async def async_session():
     async with AsyncSessionLocal() as session:

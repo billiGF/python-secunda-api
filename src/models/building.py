@@ -18,9 +18,9 @@ from .organization import Organization
 from .activities import Activities
 
 
-organization_activity = Table(
-    "organization_activity",
-    Base.metadata,
-    organization_id = Column(Integer, ForeignKey('activities.id')),
-    activities_id = Column(Integer, ForeignKey('organization.id'))
-)
+# organization_activity = Table(
+#     "organization_activity",
+#     Base.metadata,
+#     Column(Integer, ForeignKey('activities.id')),
+#     Column(Integer, ForeignKey('organization.id'))
+# )

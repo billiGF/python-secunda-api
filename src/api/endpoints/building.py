@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from src.shcemas.building import BuildingCreate, BuildingResponse, BuildingRM
+from src.shcemas.building import BuildingCreate, BuildingResponse, BuildingRM, BuildingUpdate
 from src.core.db import async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.building import building_crud
@@ -41,3 +41,16 @@ async def building_info(
       building_id, session
    )
    return info
+
+
+
+@router.patch('/', response_model=BuildingRM)
+async def updating_building(
+   building_id: int,
+   building: BuildingUpdate,
+   session: AsyncSession = Depends(async_session),
+):
+   object = await cheking_building_exist(building_id, session)
+   
+   info = await building_crud.update(object, building, session)
+   return info 

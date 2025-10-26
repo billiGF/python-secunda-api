@@ -14,6 +14,13 @@ class BuildingCreate(BuildingBase):
     pass
 
 
+class BuildingUpdate(BuildingBase):
+    name: Optional[str] = None
+    address: Optional[str] = None
+    longitude: Optional[int] = None
+    latitude: Optional[int] = None
+
+
 class BuildingResponse(BaseModel):
     id: int
     name: str
